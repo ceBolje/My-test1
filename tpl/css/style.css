@@ -1,0 +1,24 @@
+ul {
+    margin:0;
+    padding:0;
+}
+ul li {
+    list-style: none;
+}
+
+.page_title {
+    margin-top:100px;
+}
+
+.page_actions {
+    margin:50px auto;
+}
+.prize_list {
+    font-size:1.5em;
+    color:#999999;
+}
+form {
+    width:40%;
+    margin:auto;
+    text-align: left;
+}
