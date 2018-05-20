@@ -12,10 +12,6 @@ class Game {
 
     public function index(){
 
-        //$goods = $this->getAvailableGoods();
-
-        //$money  = $this->getAvailableMoney();
-
         include 'tpl/game.php';
         return;
     }
