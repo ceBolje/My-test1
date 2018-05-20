@@ -44,4 +44,11 @@ class Main {
         return $query->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function page404(){
+
+        include 'tpl/404.php';
+        return;
+    }
+
+
 }

@@ -35,7 +35,7 @@ class User
             $pdo->execute();
 
             $this->saveUserData($name);
-            $this->redirect("/game");
+            $this->redirect("/prizes/game");
 
         } else {
 
@@ -58,7 +58,7 @@ class User
             $data = $pdo->fetch(PDO::FETCH_ASSOC);
 
             $this->saveUserData($data['name']);
-            $this->redirect("/game");
+            $this->redirect("/prizes/game");
 
         } else {
 

@@ -3,13 +3,13 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Home page</title>
+    <title>Get A Prize</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           crossorigin="anonymous">
     <link rel="stylesheet" href="/tpl/css/style.css">
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
     <script src="/tpl/js/request.js" crossorigin="anonymous"></script>
@@ -30,7 +30,7 @@
                         <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/game">Game</a>
+                        <a class="nav-link" href="/prizes/game">Game</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/prizes">Prizes</a>

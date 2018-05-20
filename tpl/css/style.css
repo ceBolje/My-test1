@@ -22,3 +22,13 @@ form {
     margin:auto;
     text-align: left;
 }
+.clickable {
+    cursor: pointer;
+}
+footer {
+    width:100%;
+    padding:10px 0;
+    position:fixed;
+    bottom:0;
+    text-align:center;
+}

@@ -10,20 +10,11 @@ class Route
      */
     static function start()
     {
-
-
-        $methodName     = 'index';
-        $controllerName = 'Main';
-
         $routes = explode('/', $_SERVER['REQUEST_URI']);
 
-        if (!empty($routes[1])) {
-            $controllerName = $routes[1];
-        }
-
-        if (!empty($routes[2])) {
-            $methodName = $routes[2];
-        }
+        $controllerName = !empty($routes[1]) ?  $routes[1] : 'Main';
+        $methodName     = !empty($routes[2]) ?  $routes[2] : 'index';
+        $id             = !empty($routes[3]) ?  $routes[3] : null;
 
         $controllerPath = "classes/" .  strtolower($controllerName) . '.php';
         if (file_exists($controllerPath)) {
@@ -46,7 +37,7 @@ class Route
 
         if (method_exists($controller, $method)) {
 
-            $controller->$method();
+            $controller->$method($id);
 
         } else {
 
@@ -63,6 +54,6 @@ class Route
         $host = 'http://' . $_SERVER['HTTP_HOST'] . '/';
         header('HTTP/1.1 404 Not Found');
         header("Status: 404 Not Found");
-        header('Location:' . $host . '404');
+        header('Location:' . $host . 'main/page404');
     }
 }
