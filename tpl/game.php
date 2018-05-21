@@ -8,11 +8,11 @@
     <div class="page_actions">
         <button type="button" class="btn btn-outline-primary btn-lg" data-handler="onGetPrize">Get A Prize</button>
     </div>
-    
+
 <?php } ?>
 
     <div id="loader" class="text-center d-none">
-        <img src="/tpl/img/loader.gif" />
+        <img src="/tpl/img/loader.gif" alt="Loader"/>
     </div>
 
 <?php include 'prizesActions.php'; ?>

@@ -10,13 +10,15 @@ class Route
      */
     static function start()
     {
+
         $routes = explode('/', $_SERVER['REQUEST_URI']);
 
-        $controllerName = !empty($routes[1]) ?  $routes[1] : 'Main';
-        $methodName     = !empty($routes[2]) ?  $routes[2] : 'index';
-        $id             = !empty($routes[3]) ?  $routes[3] : null;
+        $controllerName         = !empty($routes[1]) ? $routes[1] : 'Main';
+        $methodName             = !empty($routes[2]) ? $routes[2] : 'index';
+        $id                     = !empty($routes[3]) ? $routes[3] : null;
+        $params                 = !empty($routes[4]) ? $routes[4] : null;
 
-        $controllerPath = "classes/" .  strtolower($controllerName) . '.php';
+        $controllerPath = "classes/" . strtolower($controllerName) . '.php';
         if (file_exists($controllerPath)) {
 
             include $controllerPath;
@@ -27,17 +29,17 @@ class Route
         }
 
 
-        $dbClass    = new DBClass();
+        $dbClass = new DBClass();
 
         $connection = $dbClass->getConnection();
 
         $controller = new $controllerName($connection);
 
-        $method     = $methodName;
+        $method = $methodName;
 
         if (method_exists($controller, $method)) {
 
-            $controller->$method($id);
+            $controller->$method($id, $params);
 
         } else {
 

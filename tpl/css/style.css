@@ -1,34 +1,60 @@
-ul {
-    margin:0;
-    padding:0;
+* {
+    margin: 0;
+    padding: 0;
 }
+
+.container {
+    min-height: calc(100vh - 95px);
+}
+
+footer {
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
 ul li {
     list-style: none;
 }
 
 .page_title {
-    margin:100px auto 20px auto;
+    margin: 100px auto 20px auto;
 }
 
 .page_actions {
-    margin:50px auto;
+    margin: 50px auto;
 }
+
 .prize_list {
-    font-size:1.5em;
-    color:#999999;
+    font-size: 1.5em;
+    color: #999999;
 }
+
 form {
-    width:40%;
-    margin:auto;
+    width: 40%;
+    margin: auto;
     text-align: left;
 }
+
 .clickable {
     cursor: pointer;
 }
-footer {
-    width:100%;
-    padding:10px 0;
-    position:fixed;
-    bottom:0;
-    text-align:center;
+
+.strip {
+    border-bottom: 1px solid #EAEAEA;
+    margin: 15px auto;
+}
+
+body .myalert {
+    width: 45%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 10px auto;
 }

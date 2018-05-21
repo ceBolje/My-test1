@@ -1,6 +1,8 @@
 <?php
 
-class User
+require(dirname(__FILE__) . '/' . 'main.php');
+
+class User extends Main
 {
 
     /**
@@ -9,15 +11,6 @@ class User
      * IT IS EMULATION OF AUTH
      *
      */
-
-    private $connection;
-
-
-    public function __construct($connection)
-    {
-        $this->connection = $connection;
-    }
-
 
     public function create()
     {
@@ -34,7 +27,7 @@ class User
             $pdo->bindParam(':password', $password);
             $pdo->execute();
 
-            $this->saveUserData($name);
+            $this->auth($name, $password);
             $this->redirect("/prizes/game");
 
         } else {
@@ -43,21 +36,21 @@ class User
         }
     }
 
-    public function auth()
+    public function auth($name, $password)
     {
-        $name = $_POST['name'];
-        $password = md5($_POST['password']);
+        $name = $_POST['name'] ?? $name;
+        $password = md5($_POST['password']) ?? md5($password);
 
-        $pdo = $this->connection->prepare('SELECT id, name FROM users WHERE name=:name AND password=:password');
+        $pdo = $this->connection->prepare('SELECT id, name, points FROM users WHERE name=:name AND password=:password');
         $pdo->bindParam(':name', $name);
         $pdo->bindParam(':password', $password);
         $pdo->execute();
 
         if ($pdo->rowCount() == 1) {
-            
+
             $data = $pdo->fetch(PDO::FETCH_ASSOC);
 
-            $this->saveUserData($data['name']);
+            $this->saveUserData($data['id'], $data['name']);
             $this->redirect("/prizes/game");
 
         } else {
@@ -66,12 +59,12 @@ class User
         }
     }
 
-    public function saveUserData($name)
+    public function saveUserData($id, $name)
     {
         session_start();
 
+        $_SESSION['user_id'] = $id;
         $_SESSION['user_name'] = $name;
-
     }
 
     public function logout()
@@ -85,17 +78,12 @@ class User
 
     public function signup()
     {
-        include 'tpl/signup.php';
+        return include 'tpl/signup.php';
     }
 
     public function login()
     {
-        include 'tpl/login.php';
-    }
-
-    public function redirect($location)
-    {
-        header("Location: " .$location);
+        return include 'tpl/login.php';
     }
 
 }

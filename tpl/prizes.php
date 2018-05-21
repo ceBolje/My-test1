@@ -8,46 +8,72 @@
 
     <div class="home_actions text-left">
         <div class="row font-weight-bold">
-            <div class="col-lg-1">Number</div>
-            <div class="col-lg-4">Prize Title</div>
-            <div class="col-lg-3">Status</div>
+            <div class="col-lg-1">ID</div>
+            <div class="col-lg-3">Prize Title</div>
+            <div class="col-lg-2">Prize Amount</div>
+            <div class="col-lg-1">Status</div>
+            <div class="col-lg-1">Details</div>
             <div class="col-lg-2">Date</div>
-            <div class="col-lg-2">Actions</div>
+            <div class="col-lg-2 text-right">Actions</div>
         </div>
 
-        <?php foreach($prizes as $prize) {
-            
-        }?>
+        <?php foreach ($prizes as $prize) { ?>
 
-        <div class="row text-muted">
-            <div class="col-lg-1">1</div>
-            <div class="col-lg-4">Money Prize 100 coins</div>
-            <div class="col-lg-3">Transfered to bank account</div>
-            <div class="col-lg-2">2018.05.05</div>
-            <div class="col-lg-2">No available</div>
-        </div>
-        <div class="row text-muted">
-            <div class="col-lg-1">2</div>
-            <div class="col-lg-4">Bonus Points Prize 123 points</div>
-            <div class="col-lg-3">Pending</div>
-            <div class="col-lg-2">2018.05.05</div>
-            <div class="col-lg-2">
-                <div class="dropdown">
-                    <a class="dropdown-toggle"
-                       id="dropdownMenuButton"
-                       data-toggle="dropdown"
-                       aria-haspopup="true"
-                       aria-expanded="false">
-                        Select action
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
+            <div class="row text-muted strip">
+                <div class="col-lg-1"><?php echo $prize['id']; ?></div>
+                <div class="col-lg-3"><?php echo $prize['name'] . ' ' . $prize['goodsName'] ?? ''; ?></div>
+                <div class="col-lg-2"><?php echo $prize['amount']; ?></div>
+                <div class="col-lg-1"><?php echo $prize['status']; ?></div>
+                <div class="col-lg-1"><?php echo $prize['processed_type']; ?></div>
+                <div class="col-lg-2"><?php echo $prize['date']; ?></div>
+                <div class="col-lg-2  text-right">
+
+                    <?php if ($prize['status'] == 'new') { ?>
+                        <div class="dropdown">
+                            <a class="dropdown-toggle"
+                               id="dropdownMenuButton"
+                               data-toggle="dropdown"
+                               aria-haspopup="true"
+                               aria-expanded="false">
+                                Action
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                                <?php if ($prize['type'] == 'money') { ?>
+                                    <a class="dropdown-item" href="/prizes/tobank/<?php echo $prize['id']; ?>">
+                                        Transfer to Bank Account
+                                    </a>
+                                    <a class="dropdown-item" href="/prizes/moneytopoints/<?php echo $prize['id']; ?>">
+                                        Transfer to Points
+                                    </a>
+                                <?php } ?>
+
+                                <?php if ($prize['type'] == 'points') { ?>
+                                    <a class="dropdown-item" href="/prizes/toaccount/<?php echo $prize['id']; ?>">
+                                        Put Points To Account
+                                    </a>
+                                <?php } ?>
+
+                                <?php if ($prize['type'] == 'goods') { ?>
+                                    <a class="dropdown-item" href="/prizes/delivery/<?php echo $prize['id']; ?>">
+                                        Delivery to Mail Address
+                                    </a>
+                                <?php } ?>
+
+                                <a class="dropdown-item" href="/prizes/refusal/<?php echo $prize['id']; ?>">Refusal of
+                                    this prize</a>
+                            </div>
+
+                        </div>
+                    <?php } else { ?>
+                        No available
+                    <?php } ?>
+
                 </div>
-
             </div>
-        </div>
+        <?php } ?>
+
     </div>
 <?php } ?>
+<?php include 'footer.php'; ?>

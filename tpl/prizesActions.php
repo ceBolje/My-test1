@@ -1,16 +1,18 @@
 <div id="prizeActions" class="text-center d-none">
 
-    <h4 class="text-success">Congratulation, you won <span id="prize"></span> !!!</h4>
-    <div id="moneyAction" class="d-none">
-        <a href="">Send money to bank account</a><br>
-        <a href="">Change money to bonus points</a><br>
+    <h4 class="text-success">Congratulation, you won <span id="prize"></span> !</h4>
+    <div id="moneyAction" class="prize-actions d-none">
+        <a class="link-action" data-handler="onTransferToBank" href="/prizes/tobank/">Transfer Money To Bank Account</a><br>
+        <a class="link-action" data-handler="onHandlePrize" href="/prizes/moneytopoints/">Transfer Money To
+            Points</a><br>
     </div>
-    <div id="pointsAction" class="d-none">
-        <a href="">Put bonus points to my account</a><br>
+    <div id="pointsAction" class="prize-actions d-none">
+        <a class="link-action" data-handler="onHandlePrize" href="/prizes/toaccount/">Put Points To My Account</a><br>
     </div>
-    <div id="goodsAction" class="d-none">
-        <a href="">Delivery the prize to my adress</a><br>
+    <div id="goodsAction" class="prize-actions d-none">
+        <a class="link-action" data-handler="onHandlePrize" href="/prizes/delivery/">Delivery The Prize To My Adress</a><br>
     </div>
-    <a class="text-danger" href="">Refusal of this prize</a><br>
+    <a id="refusalAction" data-handler="onHandlePrize" class="link-action" href="/prizes/refusal/">Refusal Of This
+        Prize</a><br>
 
 </div>
